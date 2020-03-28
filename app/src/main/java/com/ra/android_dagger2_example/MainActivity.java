@@ -6,8 +6,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ra.android_dagger2_example.car.Car;
-import com.ra.android_dagger2_example.dagger.CarComponent;
-import com.ra.android_dagger2_example.dagger.DaggerCarComponent;
+import com.ra.android_dagger2_example.dagger.ActivityComponent;
+import com.ra.android_dagger2_example.dagger.DaggerActivityComponent;
 
 import javax.inject.Inject;
 
@@ -21,13 +21,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CarComponent component = DaggerCarComponent.builder()
+        ActivityComponent activityComponent = DaggerActivityComponent.builder()
                 .horsePower(150)
                 .engineCapacity(1400)
+                .appComponent(((DaggerExampleApp) getApplication()).getAppComponent())
                 .build();
 
-        component.inject(MainActivity.this);
-//        car = component.getCar();
+        activityComponent.inject(MainActivity.this);
+//        car = activityComponent.getCar();
         car1.drive();
         car2.drive();
     }

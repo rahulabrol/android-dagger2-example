@@ -4,7 +4,6 @@ import com.ra.android_dagger2_example.MainActivity;
 import com.ra.android_dagger2_example.car.Car;
 
 import javax.inject.Named;
-import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
@@ -18,12 +17,14 @@ import dagger.Component;
  * <p>
  * This is  the backbone of the dagger and it knows how to provide dependencies.
  */
-@Singleton
-@Component(modules = {WheelsModule.class, PetrolEngineModule.class
+@PerActivity
+@Component(dependencies = AppComponent.class/*This tells dgger if we need to create
+           activity component it needs app components*/,
+        modules = {WheelsModule.class, PetrolEngineModule.class
         /* //we cannot use both module return the same Engine interface because of ambiguity error
         ,PetrolEngineModule.class*/
-})
-public interface CarComponent {
+        })
+public interface ActivityComponent {
 
     Car getCar();
 
@@ -38,7 +39,9 @@ public interface CarComponent {
         @BindsInstance
         Builder engineCapacity(@Named("engine capacity") int engineCapacity);
 
-        CarComponent build();
+        Builder appComponent(AppComponent appComponent);
+
+        ActivityComponent build();
     }
 
 }

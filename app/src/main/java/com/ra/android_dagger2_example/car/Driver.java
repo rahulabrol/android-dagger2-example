@@ -1,15 +1,13 @@
 package com.ra.android_dagger2_example.car;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
 /**
  * Created by Rahul Abrol on 28/3/20.
  */
-@Singleton
+/*@Singleton*/
 public class Driver {
+    //We don't own this class so we don't annotate it with @Inject
 
-    @Inject
+   /* @Inject
     public Driver() {
-    }
+    }*/
 }

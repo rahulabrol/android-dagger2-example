@@ -2,6 +2,8 @@ package com.ra.android_dagger2_example.car;
 
 import android.util.Log;
 
+import com.ra.android_dagger2_example.dagger.PerActivity;
+
 import javax.inject.Inject;
 
 /**
@@ -12,6 +14,7 @@ import javax.inject.Inject;
  * 2. Field Injection
  * 3. Method Injection
  */
+@PerActivity
 public class Car {
     private static final String TAG = "Car";
     //    @Inject
