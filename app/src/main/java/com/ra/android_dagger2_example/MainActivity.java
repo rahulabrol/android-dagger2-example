@@ -14,7 +14,7 @@ import javax.inject.Inject;
 public class MainActivity extends AppCompatActivity {
 
     @Inject
-    Car car; //field injection
+    Car car1, car2; //field injection
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         component.inject(MainActivity.this);
 //        car = component.getCar();
-        car.drive();
+        car1.drive();
+        car2.drive();
     }
 }
